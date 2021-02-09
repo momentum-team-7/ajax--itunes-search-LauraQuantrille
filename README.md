@@ -8,7 +8,7 @@ You'll use artist data from the API to display song titles, and then allow the u
 
 Here are the steps you'll need to take in order to complete this project.
 
-1. Build a form that has an `<input>` where a user can type in the name of a band or an artist.
+1. Build a form that has an `<input>` where a user can type in the name of a band or an artist. X
 2. When the user types their search term and presses the submit button (or presses Enter), make the search request to the API.
 3. When the API returns a response, use the results to display a listing of songs related to the search term.
 4. When a user clicks a song in your listing, the song should play in an `<audio>` tag that you've also added to the page (see [the mockup](musicapp.jpg)).
