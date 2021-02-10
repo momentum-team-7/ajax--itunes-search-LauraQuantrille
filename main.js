@@ -8,6 +8,7 @@ form.addEventListener('submit', (event) => {
     console.log('search music', searchMusic)
     
     function search() {
+        // fetch('broken url') to test error message
         fetch ('https://itunes.apple.com/search?term=' + searchMusic)
         .then(respond => respond.json())
         .then(data => {
@@ -19,6 +20,8 @@ form.addEventListener('submit', (event) => {
             
         
     })
+    .catch(error =>
+        catchError() )
     }
     clearInput()
     search()
@@ -86,10 +89,6 @@ function renderSearchResults(song){
     resultDiv.appendChild(artistName)
     resultDiv.appendChild(trackName)
     resultDiv.appendChild(collectionName)
-    
-    // resultDiv.appendChild(trackId)
-    // resultDiv.appendChild(previewUrl)
-    
     resultList.appendChild(resultDiv)
     
 
@@ -99,6 +98,7 @@ function renderSearchResults(song){
     playButton.addEventListener('click', (event) => {
         playSong(event.target)
         console.log(event.target)
+        
     })
     
 }
@@ -109,9 +109,15 @@ function playSong(button){
     console.log(audio)
        audio.src = button.parentElement.dataset.previewUrl
     // console.log(button.parentElement.dataset.previewUrl)
+    playSong.volume = .5
+}
+
+function catchError() {
+    const errorEl = document.createElement('div')
+    errorEl.innerText = 'Whoops! Try your search again...'
+    resultList.appendChild(errorEl)
+
 }
 
 
-// add eventListener to a button in html 
-// pull preview url and trackID?
 
