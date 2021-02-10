@@ -45,17 +45,43 @@ function renderSearchResults(song){
     collectionName.className = 'album-title'
     collectionName.innerHTML = song.collectionName
 
+    let trackId = song.trackId
+    const trackId = document.createElement('p')
+    trackId.innerHTML = trackId
+    
+    let previewUrl = song.previewUrl
+    const previewUrl = document.createElement('p')
+    previewUrl.innerHTML = previewUrl
+
+
     // innerHTML, create divs, pull data from json and populate music card
+    const playButton = document.createElement('button')
+    resultDiv.appendChild(playButton)
     resultDiv.appendChild(collectionImg)
     resultDiv.appendChild(artistName)
     resultDiv.appendChild(trackName)
     resultDiv.appendChild(collectionName)
     resultList.appendChild(resultDiv)
-    // can you combine elements in append child?
-    // clearInputs()
+    resultDiv.appendChild(trackId)
+    resultDiv.appendChild(previewUrl)
+    
+    // resultList.appendChild(resultDiv) is this right?
+}
+
+// function clearInput(){
+
+// }
+
+function playAudio(){
+    // const player = document.querySelector('.audio')
+    playButton.addEventListener('click', (event) => {
+        trackID = music.trackId
+        previewUrl = music.previewUrl
+    })
 }
 
 
 
-
+// add eventListener to a button in html 
+// pull preview url and trackID?
 

@@ -9,13 +9,14 @@
 <body>
   <h1>LQ's Music Player</h1>
   <form class="form">
-    <input type="text", class="search" Placeholder="Search Artist or Song">
+    <input type="text", class="search" Placeholder="Search Artist or Song" required>
     <button class="search-button">Find Tunes!</button>
   </form>
   <div class="results"></div>
     <ul class="results-list"></ul>
   
-    <div class="play-music"></div>
-
+    <div class="play-music">
+      <audio class="audio" controls></audio>
+    </div>
 </body>
 </html>
