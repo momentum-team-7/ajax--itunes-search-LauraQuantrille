@@ -6,6 +6,7 @@ form.addEventListener('submit', (event) => {
     event.preventDefault()
     const searchMusic = document.querySelector('.search').value
     console.log('search music', searchMusic)
+    
     function search() {
         fetch ('https://itunes.apple.com/search?term=' + searchMusic)
         .then(respond => respond.json())
@@ -32,6 +33,10 @@ function clearInput(){
     }
 }
 
+// function resultsList play audio?
+
+
+
 
 function renderSearchResults(song){
     const resultDiv = document.createElement('div')
@@ -54,27 +59,32 @@ function renderSearchResults(song){
     collectionName.className = 'album-title'
     collectionName.innerHTML = song.collectionName
 
-    let trackId = document.createElement('p')
-    trackId.innerHTML = song.trackId
+    // let trackId = document.createElement('p')
+    // trackId.innerHTML = song.trackId
     
-    let previewUrl = document.createElement('p')
-    previewUrl.innerHTML = song.previewUrl
+    let previewUrl = song.previewUrl
+    previewUrl.innerText = previewUrl
 
 
 
 
     // innerHTML, create divs, pull data from json and populate music card
-    const playButton = document.createElement('button')
+    let playButton = document.createElement('button')
+    playButton.innerText = 'Play'
+    console.log('play button', playButton)
+
+
     resultDiv.appendChild(playButton)
     resultDiv.appendChild(collectionImg)
     resultDiv.appendChild(artistName)
     resultDiv.appendChild(trackName)
     resultDiv.appendChild(collectionName)
     resultList.appendChild(resultDiv)
+    
     resultDiv.appendChild(trackId)
     resultDiv.appendChild(previewUrl)
     
-    resultList.appendChild(resultDiv)
+    
 }
 
 // function clearInput(){
@@ -83,13 +93,13 @@ function renderSearchResults(song){
 
 
 
-function playAudio(){
-    // const player = document.querySelector('.audio')
-    playButton.addEventListener('click', (event) => {
-        trackID = music.trackId
-        previewUrl = music.previewUrl
-    })
-}
+// function playAudio(){
+//     // const player = document.querySelector('.audio')
+//     playButton.addEventListener('click', (event) => {
+//         trackID = music.trackId
+//         previewUrl = music.previewUrl
+//     })
+// }
 
 
 
