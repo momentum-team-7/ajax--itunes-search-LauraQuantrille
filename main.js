@@ -19,9 +19,18 @@ form.addEventListener('submit', (event) => {
         
     })
     }
+    clearInput()
     search()
     
 })
+
+function clearInput(){
+    let songs = document.querySelectorAll(".music-result")
+    console.log({songs})
+    for (let song of songs){
+        song.remove()
+    }
+}
 
 
 function renderSearchResults(song){
@@ -45,13 +54,13 @@ function renderSearchResults(song){
     collectionName.className = 'album-title'
     collectionName.innerHTML = song.collectionName
 
-    let trackId = song.trackId
-    const trackId = document.createElement('p')
-    trackId.innerHTML = trackId
+    let trackId = document.createElement('p')
+    trackId.innerHTML = song.trackId
     
-    let previewUrl = song.previewUrl
-    const previewUrl = document.createElement('p')
-    previewUrl.innerHTML = previewUrl
+    let previewUrl = document.createElement('p')
+    previewUrl.innerHTML = song.previewUrl
+
+
 
 
     // innerHTML, create divs, pull data from json and populate music card
@@ -65,12 +74,14 @@ function renderSearchResults(song){
     resultDiv.appendChild(trackId)
     resultDiv.appendChild(previewUrl)
     
-    // resultList.appendChild(resultDiv) is this right?
+    resultList.appendChild(resultDiv)
 }
 
 // function clearInput(){
 
 // }
+
+
 
 function playAudio(){
     // const player = document.querySelector('.audio')
