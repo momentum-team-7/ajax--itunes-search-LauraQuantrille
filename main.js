@@ -1,4 +1,4 @@
-const urlBase = "https://itunes.apple.com/search?parameterkeyvalue"
+// const urlBase = "https://itunes.apple.com/search?"
 const form = document.querySelector('.form')
 const resultList = document.querySelector('.results-list')
 
@@ -42,6 +42,12 @@ function renderSearchResults(song){
     const resultDiv = document.createElement('div')
     resultDiv.className = 'music-result'
 
+    let playAudio = document.createElement('div')
+    playAudio.className = 'play-button'
+    playAudio.dataset.previewUrl = song.previewUrl
+
+// save attribute in the data set 
+
     let collectionImg = document.createElement('img')
     collectionImg.className = 'album-art'
     collectionImg.src = song.artworkUrl100
@@ -62,8 +68,8 @@ function renderSearchResults(song){
     // let trackId = document.createElement('p')
     // trackId.innerHTML = song.trackId
     
-    let previewUrl = song.previewUrl
-    previewUrl.innerText = previewUrl
+    // let previewUrl = document.
+    // previewUrl.innerText = song.previewUrl
 
 
 
@@ -73,34 +79,37 @@ function renderSearchResults(song){
     playButton.innerText = 'Play'
     console.log('play button', playButton)
 
-
-    resultDiv.appendChild(playButton)
+    playAudio.appendChild(playButton)
+    
+    resultDiv.appendChild(playAudio)
     resultDiv.appendChild(collectionImg)
     resultDiv.appendChild(artistName)
     resultDiv.appendChild(trackName)
     resultDiv.appendChild(collectionName)
+    
+    // resultDiv.appendChild(trackId)
+    // resultDiv.appendChild(previewUrl)
+    
     resultList.appendChild(resultDiv)
     
-    resultDiv.appendChild(trackId)
-    resultDiv.appendChild(previewUrl)
+
     
+    
+    
+    playButton.addEventListener('click', (event) => {
+        playSong(event.target)
+        console.log(event.target)
+    })
     
 }
 
-// function clearInput(){
 
-// }
-
-
-
-// function playAudio(){
-//     // const player = document.querySelector('.audio')
-//     playButton.addEventListener('click', (event) => {
-//         trackID = music.trackId
-//         previewUrl = music.previewUrl
-//     })
-// }
-
+function playSong(button){
+    let audio = document.querySelector('audio')
+    console.log(audio)
+       audio.src = button.parentElement.dataset.previewUrl
+    // console.log(button.parentElement.dataset.previewUrl)
+}
 
 
 // add eventListener to a button in html 
