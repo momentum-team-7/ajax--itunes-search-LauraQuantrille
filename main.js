@@ -75,20 +75,21 @@ function renderSearchResults(song){
     // previewUrl.innerText = song.previewUrl
 
 
-
-
     // innerHTML, create divs, pull data from json and populate music card
     let playButton = document.createElement('button')
     playButton.innerText = 'Play'
     console.log('play button', playButton)
 
-    playAudio.appendChild(playButton)
     
-    resultDiv.appendChild(playAudio)
+    
+    
     resultDiv.appendChild(collectionImg)
     resultDiv.appendChild(artistName)
     resultDiv.appendChild(trackName)
     resultDiv.appendChild(collectionName)
+    playAudio.appendChild(playButton)
+    resultDiv.appendChild(playAudio)
+    
     resultList.appendChild(resultDiv)
     
 
@@ -118,6 +119,5 @@ function catchError() {
     resultList.appendChild(errorEl)
 
 }
-
 
 
