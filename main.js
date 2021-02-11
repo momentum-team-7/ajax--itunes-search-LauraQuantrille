@@ -12,16 +12,27 @@ form.addEventListener('submit', (event) => {
         fetch ('https://itunes.apple.com/search?term=' + searchMusic)
         .then(respond => respond.json())
         .then(data => {
-            console.log(data)
-            for (let song of data.results) {
-                renderSearchResults(song)
+            if (data.results.length > 0){
+                console.log(data)
+                for (let song of data.results) {
+                    renderSearchResults(song)
+                } 
+            } 
+            else {
+            console.log('no result error')
+               const noResult = document.createElement('div')
+               noResult.innerText = "Whoops, we can't find anything with this name."
+               resultList.appendChild(noResult)
+               
             }
-            console.log(data.results[0].artistName)
+            // console.log(data.results[0].artistName)
             
         
     })
-    .catch(error =>
-        catchError() )
+    .catch(error => {
+        console.log('error is', error)
+        catchError() })
+
     }
     clearInput()
     search()
